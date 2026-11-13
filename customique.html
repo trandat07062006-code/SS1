@@ -1,0 +1,910 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Customique – Custom clothing in alt, gothic, indie and more</title>
+    <meta
+      name="description"
+      content="Customise shirts, T-shirts, hoodies, pants and jeans with your own text and artwork, or pick a ready-made alt, gothic or indie design."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="customique.css" />
+  </head>
+  <body>
+    <svg
+      width="0"
+      height="0"
+      style="position: absolute"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <!-- garments -->
+      <symbol id="g-tee" viewBox="0 0 300 300">
+        <path
+          fill="currentColor"
+          stroke="rgba(0,0,0,.22)"
+          stroke-width="2"
+          d="M100 30 60 45 20 95l35 20 20-20v175h150V95l20 20 35-20-40-50-40-15q-50 30-100 0z"
+        />
+        <path
+          fill="none"
+          stroke="rgba(0,0,0,.2)"
+          stroke-width="3"
+          d="M100 30q50 30 100 0"
+        />
+      </symbol>
+      <symbol id="g-shirt" viewBox="0 0 300 300">
+        <path
+          fill="currentColor"
+          stroke="rgba(0,0,0,.22)"
+          stroke-width="2"
+          d="M100 28 55 45 16 205l36 8 24-98v160h148V115l24 98 36-8-39-160-45-17-50 34z"
+        />
+        <path
+          fill="rgba(255,255,255,.28)"
+          stroke="rgba(0,0,0,.22)"
+          stroke-width="2"
+          d="M100 28l50 34-14 22-48-40zM200 28l-50 34 14 22 48-40z"
+        />
+        <path
+          fill="none"
+          stroke="rgba(0,0,0,.25)"
+          stroke-width="2"
+          d="M150 62v206"
+        />
+        <g fill="rgba(0,0,0,.3)">
+          <circle cx="150" cy="100" r="3" />
+          <circle cx="150" cy="140" r="3" />
+          <circle cx="150" cy="180" r="3" />
+          <circle cx="150" cy="220" r="3" />
+        </g>
+      </symbol>
+      <symbol id="g-hood" viewBox="0 0 300 300">
+        <path
+          fill="currentColor"
+          stroke="rgba(0,0,0,.22)"
+          stroke-width="2"
+          d="M105 28q45 45 90 0l45 20 40 120-32 12-8-40v142H60V140l-8 40-32-12 40-120z"
+        />
+        <path
+          fill="rgba(0,0,0,.22)"
+          d="M105 28q45 45 90 0-8 38-45 46-37-8-45-46z"
+        />
+        <path
+          fill="none"
+          stroke="rgba(0,0,0,.2)"
+          stroke-width="3"
+          d="M100 230h100l12 30H88z"
+        />
+      </symbol>
+      <symbol id="g-pants" viewBox="0 0 300 300">
+        <path
+          fill="currentColor"
+          stroke="rgba(0,0,0,.22)"
+          stroke-width="2"
+          d="M92 14h116l22 272h-62l-18-170-18 170H70z"
+        />
+        <path
+          fill="none"
+          stroke="rgba(0,0,0,.25)"
+          stroke-width="3"
+          d="M92 34h116M150 34v82"
+        />
+      </symbol>
+      <symbol id="g-jeans" viewBox="0 0 300 300">
+        <path
+          fill="currentColor"
+          stroke="rgba(0,0,0,.25)"
+          stroke-width="2"
+          d="M92 14h116l22 272h-62l-18-170-18 170H70z"
+        />
+        <path
+          fill="none"
+          stroke="rgba(255,255,255,.55)"
+          stroke-width="2"
+          stroke-dasharray="5 4"
+          d="M92 34h116M150 34v82M98 42q14 4 22 30M202 42q-14 4-22 30M104 276 118 130M196 276 182 130"
+        />
+      </symbol>
+      <!-- graphics -->
+      <symbol id="a-skull" viewBox="0 0 100 100">
+        <path
+          fill="currentColor"
+          fill-rule="evenodd"
+          d="M50 8C28 8 14 24 14 44c0 12 6 20 14 25v13h10v-8h6v8h12v-8h6v8h10V69c8-5 14-13 14-25C86 24 72 8 50 8zM31 46a9 9 0 1018 0 9 9 0 10-18 0zM51 46a9 9 0 1018 0 9 9 0 10-18 0zM50 56l-5 9h10z"
+        />
+      </symbol>
+      <symbol id="a-moon" viewBox="0 0 100 100">
+        <path fill="currentColor" d="M62 8a42 42 0 000 84a50 50 0 010-84z" />
+      </symbol>
+      <symbol id="a-bolt" viewBox="0 0 100 100">
+        <path fill="currentColor" d="M58 4 20 56h26L38 96l44-56H54z" />
+      </symbol>
+      <symbol id="a-rose" viewBox="0 0 100 100">
+        <g fill="currentColor">
+          <circle cx="50" cy="25" r="18" />
+          <circle cx="75" cy="43" r="18" />
+          <circle cx="66" cy="72" r="18" />
+          <circle cx="34" cy="72" r="18" />
+          <circle cx="25" cy="43" r="18" />
+        </g>
+        <circle cx="50" cy="50" r="11" fill="#fff" opacity=".4" />
+      </symbol>
+      <symbol id="a-mushroom" viewBox="0 0 100 100">
+        <path
+          fill="currentColor"
+          d="M10 52C10 28 28 12 50 12s40 16 40 40zM38 52h24v34q0 8-12 8t-12-8z"
+        />
+        <g fill="#fff" opacity=".45">
+          <circle cx="34" cy="34" r="7" />
+          <circle cx="62" cy="28" r="6" />
+          <circle cx="70" cy="44" r="5" />
+        </g>
+      </symbol>
+      <symbol id="a-cross" viewBox="0 0 100 100">
+        <path fill="currentColor" d="M42 6h16v28h28v16H58v44H42V50H14V34h28z" />
+      </symbol>
+      <symbol id="a-star" viewBox="0 0 100 100">
+        <path
+          fill="currentColor"
+          d="m50 6 13 28 30 4-22 21 6 30-27-15-27 15 6-30L7 38l30-4z"
+        />
+      </symbol>
+    </svg>
+
+    <header class="site-header">
+      <div class="wrap">
+        <a class="logo" href="#top">Custom<span>ique</span></a>
+        <nav id="nav" aria-label="Main">
+          <a href="#services">What we make</a>
+          <a href="#styles">Ready-made styles</a>
+          <a href="#how">How it works</a>
+          <a class="btn sm" href="#order">Get a quote</a>
+        </nav>
+        <div class="tools">
+          <button
+            type="button"
+            class="cart-btn"
+            id="cartBtn"
+            aria-label="Open cart"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              width="22"
+              height="22"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M6 7h12l-1 13H7L6 7z" />
+              <path d="M9 7a3 3 0 016 0" />
+            </svg>
+            <span class="badge" id="badge" hidden>0</span>
+          </button>
+          <button
+            type="button"
+            class="burger"
+            id="burger"
+            aria-label="Menu"
+            aria-expanded="false"
+            aria-controls="nav"
+          >
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <div class="hero">
+        <div class="wrap">
+          <div>
+            <h1>Wear your own style. Alt, gothic, indie or all yours.</h1>
+            <p class="lead">
+              Customise shirts, T-shirts, hoodies, pants and jeans with your own
+              text and artwork, or start from one of our ready-made designs.
+            </p>
+            <div class="cta">
+              <a class="btn" href="#studio">Start designing</a>
+              <a class="btn ghost" href="#styles">Browse ready-made</a>
+            </div>
+            <div class="stats">
+              <div><b>5 pieces</b><span>Tops &amp; bottoms</span></div>
+              <div><b>Your artwork</b><span>Upload any image</span></div>
+              <div><b>Free proof</b><span>Approve before we print</span></div>
+            </div>
+          </div>
+
+          <div class="studio" id="studio">
+            <div class="stage">
+              <svg
+                id="preview"
+                viewBox="0 0 300 300"
+                role="img"
+                aria-label="Live preview of your design"
+              >
+                <g style="color: #8e1019"><use href="#g-tee" /></g>
+              </svg>
+              <div class="size-tag" id="sizeTag">T-shirt · size M</div>
+            </div>
+            <div class="controls">
+              <div class="row">
+                <div>
+                  <label for="garment">Piece</label>
+                  <select id="garment">
+                    <option value="tee">T-shirt</option>
+                    <option value="shirt">Shirt</option>
+                    <option value="hood">Hoodie</option>
+                    <option value="pants">Pants</option>
+                    <option value="jeans">Jeans</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="txt">Print text</label
+                  ><input
+                    type="text"
+                    id="txt"
+                    maxlength="20"
+                    placeholder="Optional"
+                    autocomplete="off"
+                  />
+                </div>
+              </div>
+              <div>
+                <span class="lab">Fabric colour</span>
+                <div class="sw" id="fab"></div>
+              </div>
+              <div>
+                <span class="lab">Text &amp; graphic colour</span>
+                <div class="sw" id="ink"></div>
+              </div>
+              <div class="gfx">
+                <span class="lab">Graphic</span>
+                <div class="row">
+                  <select
+                    id="art"
+                    aria-label="Choose one of our graphics"
+                  ></select>
+                  <button type="button" class="btn outline" id="upBtn">
+                    Upload yours
+                  </button>
+                </div>
+                <input type="file" id="upload" accept="image/*" hidden />
+                <div class="up-info" id="upInfo" hidden>
+                  <span id="upName"></span
+                  ><button type="button" class="link" id="upRemove">
+                    Remove
+                  </button>
+                </div>
+                <div class="row">
+                  <div>
+                    <label for="gScale">Graphic size</label
+                    ><input
+                      type="range"
+                      id="gScale"
+                      min="40"
+                      max="140"
+                      value="100"
+                    />
+                  </div>
+                  <div>
+                    <label for="gY">Position</label
+                    ><input type="range" id="gY" min="-40" max="40" value="0" />
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div>
+                  <label for="sSize">Size</label
+                  ><select id="sSize">
+                    <option>XS</option>
+                    <option>S</option>
+                    <option selected>M</option>
+                    <option>L</option>
+                    <option>XL</option>
+                    <option>XXL</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="sQty">Quantity</label
+                  ><input type="number" id="sQty" min="1" max="99" value="1" />
+                </div>
+              </div>
+              <div class="price-line">
+                <span>Price</span><b id="sPrice">200.000₫</b>
+              </div>
+              <button class="btn solid" type="button" id="addBtn">
+                Add to cart
+              </button>
+              <a class="quote-link" href="#order" id="useDesign"
+                >Request a quote for this design instead</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section id="services">
+        <div class="wrap">
+          <div class="head">
+            <h2>What we customise</h2>
+            <p>Pick a piece to open it in the studio.</p>
+          </div>
+          <div class="svc">
+            <button type="button" data-g="tee">
+              <svg viewBox="0 0 300 300"><use href="#g-tee" /></svg
+              ><b>T-shirt</b><span>from 200.000₫</span>
+            </button>
+            <button type="button" data-g="shirt">
+              <svg viewBox="0 0 300 300"><use href="#g-shirt" /></svg
+              ><b>Shirt</b><span>from 280.000₫</span>
+            </button>
+            <button type="button" data-g="hood">
+              <svg viewBox="0 0 300 300"><use href="#g-hood" /></svg
+              ><b>Hoodie</b><span>from 440.000₫</span>
+            </button>
+            <button type="button" data-g="pants">
+              <svg viewBox="0 0 300 300"><use href="#g-pants" /></svg
+              ><b>Pants</b><span>from 320.000₫</span>
+            </button>
+            <button type="button" data-g="jeans">
+              <svg viewBox="0 0 300 300"><use href="#g-jeans" /></svg
+              ><b>Jeans</b><span>from 480.000₫</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="styles" class="alt">
+        <div class="wrap">
+          <div class="head">
+            <h2>Ready-made styles</h2>
+            <p>
+              Add one as it is, or open it in the studio and make it your own.
+            </p>
+          </div>
+          <div
+            class="chips"
+            id="chips"
+            role="group"
+            aria-label="Filter by style"
+          >
+            <button type="button" aria-pressed="true">All</button
+            ><button type="button" aria-pressed="false">Alt</button
+            ><button type="button" aria-pressed="false">Gothic</button
+            ><button type="button" aria-pressed="false">Indie</button
+            ><button type="button" aria-pressed="false">Grunge</button
+            ><button type="button" aria-pressed="false">Minimal</button>
+          </div>
+          <div class="grid" id="designGrid">
+            <article class="item">
+              <div class="pic st-gothic">
+                <svg viewBox="0 0 300 300" aria-hidden="true">
+                  <g style="color: #1c0d0e"><use href="#g-tee"></use></g>
+                  <use
+                    href="#a-rose"
+                    x="102"
+                    y="64"
+                    width="96"
+                    height="96"
+                    style="color: #f3d6d8"
+                  ></use>
+                  <text
+                    x="150"
+                    y="178"
+                    text-anchor="middle"
+                    font-family="Bricolage Grotesque, Arial Black, sans-serif"
+                    font-weight="800"
+                    font-size="16"
+                    fill="#f3d6d8"
+                  >
+                    nightbloom
+                  </text>
+                </svg>
+              </div>
+              <div class="info">
+                <h3>Night Garden</h3>
+                <p>Gothic · T-shirt · 260.000₫</p>
+                <div class="actions">
+                  <button type="button" data-do="edit">Customise</button
+                  ><button type="button" data-do="add">Add to cart</button>
+                </div>
+              </div>
+            </article>
+            <article class="item">
+              <div class="pic st-gothic">
+                <svg viewBox="0 0 300 300" aria-hidden="true">
+                  <g style="color: #1c0d0e"><use href="#g-hood"></use></g>
+                  <use
+                    href="#a-skull"
+                    x="102"
+                    y="110"
+                    width="96"
+                    height="96"
+                    style="color: #ffffff"
+                  ></use>
+                  <text
+                    x="150"
+                    y="224"
+                    text-anchor="middle"
+                    font-family="Bricolage Grotesque, Arial Black, sans-serif"
+                    font-weight="800"
+                    font-size="15"
+                    fill="#ffffff"
+                  >
+                    grave shift
+                  </text>
+                </svg>
+              </div>
+              <div class="info">
+                <h3>Grave Shift</h3>
+                <p>Gothic · Hoodie · 500.000₫</p>
+                <div class="actions">
+                  <button type="button" data-do="edit">Customise</button
+                  ><button type="button" data-do="add">Add to cart</button>
+                </div>
+              </div>
+            </article>
+            <article class="item">
+              <div class="pic st-gothic">
+                <svg viewBox="0 0 300 300" aria-hidden="true">
+                  <g style="color: #8e1019"><use href="#g-shirt"></use></g>
+                  <use
+                    href="#a-cross"
+                    x="168"
+                    y="90"
+                    width="56"
+                    height="56"
+                    style="color: #ffffff"
+                  ></use>
+                </svg>
+              </div>
+              <div class="info">
+                <h3>Velvet Cross</h3>
+                <p>Gothic · Shirt · 320.000₫</p>
+                <div class="actions">
+                  <button type="button" data-do="edit">Customise</button
+                  ><button type="button" data-do="add">Add to cart</button>
+                </div>
+              </div>
+            </article>
+            <article class="item">
+              <div class="pic st-indie">
+                <svg viewBox="0 0 300 300" aria-hidden="true">
+                  <g style="color: #e9dfd2"><use href="#g-tee"></use></g>
+                  <use
+                    href="#a-mushroom"
+                    x="102"
+                    y="64"
+                    width="96"
+                    height="96"
+                    style="color: #8e1019"
+                  ></use>
+                  <text
+                    x="150"
+                    y="178"
+                    text-anchor="middle"
+                    font-family="Bricolage Grotesque, Arial Black, sans-serif"
+                    font-weight="800"
+                    font-size="15"
+                    fill="#8e1019"
+                  >
+                    soft static
+                  </text>
+                </svg>
+              </div>
+              <div class="info">
+                <h3>Soft Static</h3>
+                <p>Indie · T-shirt · 260.000₫</p>
+                <div class="actions">
+                  <button type="button" data-do="edit">Customise</button
+                  ><button type="button" data-do="add">Add to cart</button>
+                </div>
+              </div>
+            </article>
+            <article class="item">
+              <div class="pic st-indie">
+                <svg viewBox="0 0 300 300" aria-hidden="true">
+                  <g style="color: #f3d6d8"><use href="#g-hood"></use></g>
+                  <use
+                    href="#a-moon"
+                    x="102"
+                    y="110"
+                    width="96"
+                    height="96"
+                    style="color: #8e1019"
+                  ></use>
+                  <text
+                    x="150"
+                    y="224"
+                    text-anchor="middle"
+                    font-family="Bricolage Grotesque, Arial Black, sans-serif"
+                    font-weight="800"
+                    font-size="23"
+                    fill="#8e1019"
+                  >
+                    moonlit
+                  </text>
+                </svg>
+              </div>
+              <div class="info">
+                <h3>Moonlit Walk</h3>
+                <p>Indie · Hoodie · 500.000₫</p>
+                <div class="actions">
+                  <button type="button" data-do="edit">Customise</button
+                  ><button type="button" data-do="add">Add to cart</button>
+                </div>
+              </div>
+            </article>
+            <article class="item">
+              <div class="pic st-indie">
+                <svg viewBox="0 0 300 300" aria-hidden="true">
+                  <g style="color: #2d3f63"><use href="#g-jeans"></use></g>
+                  <use
+                    href="#a-rose"
+                    x="88"
+                    y="72"
+                    width="52"
+                    height="52"
+                    style="color: #ffffff"
+                  ></use>
+                </svg>
+              </div>
+              <div class="info">
+                <h3>Daisy Chain</h3>
+                <p>Indie · Jeans · 520.000₫</p>
+                <div class="actions">
+                  <button type="button" data-do="edit">Customise</button
+                  ><button type="button" data-do="add">Add to cart</button>
+                </div>
+              </div>
+            </article>
+            <article class="item">
+              <div class="pic st-alt">
+                <svg viewBox="0 0 300 300" aria-hidden="true">
+                  <g style="color: #ffffff"><use href="#g-tee"></use></g>
+                  <use
+                    href="#a-bolt"
+                    x="102"
+                    y="64"
+                    width="96"
+                    height="96"
+                    style="color: #8e1019"
+                  ></use>
+                  <text
+                    x="150"
+                    y="178"
+                    text-anchor="middle"
+                    font-family="Bricolage Grotesque, Arial Black, sans-serif"
+                    font-weight="800"
+                    font-size="20"
+                    fill="#8e1019"
+                  >
+                    overload
+                  </text>
+                </svg>
+              </div>
+              <div class="info">
+                <h3>Overload</h3>
+                <p>Alt · T-shirt · 260.000₫</p>
+                <div class="actions">
+                  <button type="button" data-do="edit">Customise</button
+                  ><button type="button" data-do="add">Add to cart</button>
+                </div>
+              </div>
+            </article>
+            <article class="item">
+              <div class="pic st-alt">
+                <svg viewBox="0 0 300 300" aria-hidden="true">
+                  <g style="color: #1c0d0e"><use href="#g-pants"></use></g>
+                  <use
+                    href="#a-star"
+                    x="88"
+                    y="62"
+                    width="52"
+                    height="52"
+                    style="color: #d9363e"
+                  ></use>
+                  <text
+                    x="114"
+                    y="132"
+                    text-anchor="middle"
+                    font-family="Bricolage Grotesque, Arial Black, sans-serif"
+                    font-weight="800"
+                    font-size="22"
+                    fill="#d9363e"
+                  >
+                    hex
+                  </text>
+                </svg>
+              </div>
+              <div class="info">
+                <h3>Hex Pants</h3>
+                <p>Alt · Pants · 380.000₫</p>
+                <div class="actions">
+                  <button type="button" data-do="edit">Customise</button
+                  ><button type="button" data-do="add">Add to cart</button>
+                </div>
+              </div>
+            </article>
+            <article class="item">
+              <div class="pic st-grunge">
+                <svg viewBox="0 0 300 300" aria-hidden="true">
+                  <g style="color: #6b6b6b"><use href="#g-jeans"></use></g>
+                  <use
+                    href="#a-skull"
+                    x="88"
+                    y="62"
+                    width="52"
+                    height="52"
+                    style="color: #ffffff"
+                  ></use>
+                  <text
+                    x="114"
+                    y="132"
+                    text-anchor="middle"
+                    font-family="Bricolage Grotesque, Arial Black, sans-serif"
+                    font-weight="800"
+                    font-size="11"
+                    fill="#ffffff"
+                  >
+                    no rules
+                  </text>
+                </svg>
+              </div>
+              <div class="info">
+                <h3>No Rules</h3>
+                <p>Grunge · Jeans · 540.000₫</p>
+                <div class="actions">
+                  <button type="button" data-do="edit">Customise</button
+                  ><button type="button" data-do="add">Add to cart</button>
+                </div>
+              </div>
+            </article>
+            <article class="item">
+              <div class="pic st-minimal">
+                <svg viewBox="0 0 300 300" aria-hidden="true">
+                  <g style="color: #ffffff"><use href="#g-shirt"></use></g>
+                  <text
+                    x="196"
+                    y="121.33333333333333"
+                    text-anchor="middle"
+                    font-family="Bricolage Grotesque, Arial Black, sans-serif"
+                    font-weight="800"
+                    font-size="10"
+                    fill="#8e1019"
+                  >
+                    customique
+                  </text>
+                </svg>
+              </div>
+              <div class="info">
+                <h3>Plain Rebel</h3>
+                <p>Minimal · Shirt · 300.000₫</p>
+                <div class="actions">
+                  <button type="button" data-do="edit">Customise</button
+                  ><button type="button" data-do="add">Add to cart</button>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="how">
+        <div class="wrap">
+          <div class="head">
+            <h2>How it works</h2>
+            <p>From idea to your door in three steps.</p>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <i>01</i>
+              <h3>Design or choose</h3>
+              <p>
+                Type your text, upload your artwork, or pick a ready-made style.
+                Preview it live on the garment.
+              </p>
+            </div>
+            <div class="step">
+              <i>02</i>
+              <h3>Approve the proof</h3>
+              <p>
+                We send a free digital proof within one working day. Nothing is
+                printed until you say yes.
+              </p>
+            </div>
+            <div class="step">
+              <i>03</i>
+              <h3>We print and ship</h3>
+              <p>Each piece is made to order and delivered in 5–7 days.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="why" class="dark">
+        <div class="wrap">
+          <div class="head">
+            <h2>Built for quality</h2>
+            <p>What you get with every Customique order.</p>
+          </div>
+          <div class="feats">
+            <div class="feat">
+              <h3>Your art, printed right</h3>
+              <p>
+                Upload PNG, JPG or SVG. We check resolution and placement on
+                every proof.
+              </p>
+            </div>
+            <div class="feat">
+              <h3>Durable printing</h3>
+              <p>
+                Sharp, long-lasting prints that stay crisp on cotton, fleece and
+                denim.
+              </p>
+            </div>
+            <div class="feat">
+              <h3>Easy swaps</h3>
+              <p>Wrong size? We exchange it for free within 14 days.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="order">
+        <div class="wrap order">
+          <div>
+            <h2>Request your quote</h2>
+            <p class="lead">
+              Planning a team order, a collection or a complex design? Tell us
+              what you need. We reply within one working day with a price and a
+              free proof.
+            </p>
+            <ul>
+              <li>No obligation</li>
+              <li>Free design proof</li>
+              <li>Send artwork by replying to our email</li>
+              <li>Discounts for teams and events</li>
+            </ul>
+          </div>
+          <form id="form" novalidate>
+            <div>
+              <label for="name">Full name</label
+              ><input type="text" id="name" required autocomplete="name" />
+            </div>
+            <div>
+              <label for="email">Email</label
+              ><input type="email" id="email" required autocomplete="email" />
+            </div>
+            <div class="row">
+              <div>
+                <label for="qPiece">Piece</label>
+                <select id="qPiece">
+                  <option value="tee">T-shirt</option>
+                  <option value="shirt">Shirt</option>
+                  <option value="hood">Hoodie</option>
+                  <option value="pants">Pants</option>
+                  <option value="jeans">Jeans</option>
+                </select>
+              </div>
+              <div>
+                <label for="qty">Quantity</label
+                ><input type="number" id="qty" min="1" max="999" value="1" />
+              </div>
+            </div>
+            <div>
+              <label for="size">Size(s)</label
+              ><input
+                type="text"
+                id="size"
+                placeholder="e.g. M, or 5 x M and 5 x L"
+              />
+            </div>
+            <div>
+              <label for="note">Design details</label
+              ><textarea
+                id="note"
+                rows="4"
+                placeholder="Style, colours, text, artwork..."
+              ></textarea>
+            </div>
+            <button class="btn solid" type="submit">Send request</button>
+            <div id="msg" class="msg" role="status" aria-live="polite"></div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <span>© 2026 Customique. All rights reserved.</span
+        ><span>hello@customique.com</span>
+      </div>
+    </footer>
+
+    <div class="overlay" id="overlay" hidden></div>
+    <aside
+      class="drawer"
+      id="cart"
+      aria-hidden="true"
+      aria-label="Shopping cart"
+    >
+      <div class="d-head">
+        <h2>Your cart</h2>
+        <button type="button" class="x" id="closeCart" aria-label="Close cart">
+          &times;
+        </button>
+      </div>
+      <div class="d-body">
+        <div id="cartView">
+          <div id="cartItems"></div>
+          <div class="sum" id="sum"></div>
+          <p class="note">
+            Free shipping over 1.000.000₫. 10% off when you order 10 or more
+            pieces.
+          </p>
+          <button class="btn solid" type="button" id="toCheckout">
+            Checkout
+          </button>
+        </div>
+        <form id="checkoutView" hidden novalidate>
+          <div>
+            <label for="cName">Full name</label
+            ><input type="text" id="cName" autocomplete="name" />
+          </div>
+          <div>
+            <label for="cEmail">Email</label
+            ><input type="email" id="cEmail" autocomplete="email" />
+          </div>
+          <div>
+            <label for="cPhone">Phone</label
+            ><input type="tel" id="cPhone" autocomplete="tel" />
+          </div>
+          <div>
+            <label for="cAddr">Delivery address</label
+            ><textarea
+              id="cAddr"
+              rows="3"
+              autocomplete="street-address"
+            ></textarea>
+          </div>
+          <p class="note">Payment: cash on delivery.</p>
+          <button class="btn solid" type="submit">Place order</button>
+          <button class="link" type="button" id="backCart">Back to cart</button>
+          <div id="cMsg" class="msg" role="status" aria-live="polite"></div>
+        </form>
+        <div id="doneView" hidden>
+          <h3>Thank you!</h3>
+          <p id="doneText"></p>
+          <button class="btn solid" type="button" id="doneClose">
+            Continue shopping
+          </button>
+        </div>
+      </div>
+    </aside>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <noscript
+      ><p
+        style="
+          text-align: center;
+          padding: 12px;
+          background: #fff;
+          color: #8e1019;
+        "
+      >
+        Please enable JavaScript to use the design studio.
+      </p></noscript
+    >
+    <script src="customique.js"></script>
+  </body>
+</html>

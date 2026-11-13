@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Customique – Custom clothing in alt, gothic, indie and more</title>
+<meta name="description" content="Customise shirts, T-shirts, hoodies, pants and jeans with your own text and artwork, or pick a ready-made alt, gothic or indie design.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Customique – dark red & white */
+:root{
+  --red:#8e1019;--red-deep:#5f0a11;--red-mid:#a8141f;--rose:#f3d6d8;--cream:#fbf5f4;
+  --white:#fff;--ink:#2a0a0d;--muted:#7a5c5f;--line:#ead3d5;
+  --weave:repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 2px,transparent 2px 12px);
+  --pin:repeating-linear-gradient(90deg,rgba(142,16,25,.06) 0 1px,transparent 1px 14px);
+}
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:'DM Sans',system-ui,sans-serif;color:var(--ink);background:var(--white);line-height:1.6;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.logo{font-family:'Bricolage Grotesque','Arial Black',sans-serif;line-height:1.08}
+a{color:inherit}
+img,svg{max-width:100%}
+:focus-visible{outline:3px solid var(--rose);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+/* header */
+.site-header{position:sticky;top:0;z-index:20;background:var(--red-deep);color:#fff;border-bottom:1px solid rgba(255,255,255,.12)}
+.site-header .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-size:1.55rem;font-weight:800;text-decoration:none;letter-spacing:-.03em;color:#fff}
+.logo span{color:var(--rose)}
+nav{display:flex;align-items:center;gap:30px}
+nav a{text-decoration:none;font-size:.95rem;font-weight:500;color:#f3d6d8}
+nav a:hover{color:#fff}
+
+/* buttons */
+.btn{display:inline-block;background:var(--white);color:var(--red);border:0;border-radius:10px;padding:13px 26px;
+  font:600 .98rem 'DM Sans',sans-serif;cursor:pointer;text-decoration:none;text-align:center;
+  transition:background .15s,color .15s,transform .15s}
+.btn:hover{background:var(--rose);transform:translateY(-1px)}
+.btn.solid{background:var(--red);color:#fff}
+.btn.solid:hover{background:var(--red-mid)}
+.btn.sm{padding:10px 20px}
+.btn.ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+.btn.ghost:hover{background:rgba(255,255,255,.12)}
+
+/* hero */
+.hero{background:var(--red) var(--weave);color:#fff;padding:72px 0 88px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(2.5rem,5.4vw,4.4rem);font-weight:800;letter-spacing:-.035em}
+.hero .lead{margin-top:22px;max-width:46ch;font-size:1.12rem;color:#f6dcde}
+.cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:32px}
+.stats{display:flex;gap:40px;margin-top:48px;padding-top:26px;border-top:1px solid rgba(255,255,255,.22);flex-wrap:wrap}
+.stats b{display:block;font-family:'Bricolage Grotesque',sans-serif;font-size:1.6rem}
+.stats span{font-size:.88rem;color:#f0cdd0}
+
+/* studio card */
+.studio{background:var(--white);color:var(--ink);border-radius:20px;padding:22px;box-shadow:0 30px 60px -28px rgba(0,0,0,.55)}
+.stage{background:var(--cream) var(--pin);border-radius:14px;aspect-ratio:1/1;display:grid;place-items:center;border:1px solid var(--line)}
+.stage svg{width:80%;transition:color .2s;filter:drop-shadow(0 14px 12px rgba(95,10,17,.22))}
+.controls{display:grid;gap:16px;margin-top:20px}
+label,.lab{display:block;margin-bottom:6px;font-size:.84rem;font-weight:600;color:var(--muted)}
+input,select,textarea{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:10px;font:inherit;color:var(--ink);background:#fff}
+input:focus,select:focus,textarea:focus{border-color:var(--red);outline:none;box-shadow:0 0 0 3px rgba(142,16,25,.16)}
+.sw{display:flex;gap:10px;flex-wrap:wrap}
+.sw button{width:34px;height:34px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--line);cursor:pointer;transition:transform .15s}
+.sw button:hover{transform:scale(1.1)}
+.sw button[aria-pressed="true"]{box-shadow:0 0 0 3px var(--red)}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.studio .btn{width:100%}
+
+/* sections */
+section{padding:92px 0}
+.head{max-width:620px;margin-bottom:48px}
+.head h2{font-size:clamp(2rem,3.8vw,2.9rem);font-weight:800;letter-spacing:-.03em;color:var(--red)}
+.head p{margin-top:14px;color:var(--muted);font-size:1.05rem}
+.dark .head h2{color:#fff}
+.dark .head p{color:#f0cdd0}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.step{border:1px solid var(--line);border-radius:16px;padding:30px;background:#fff;border-top:4px solid var(--red)}
+.step i{font:800 2.2rem/1 'Bricolage Grotesque',sans-serif;color:var(--rose);font-style:normal}
+.step h3{margin:14px 0 8px;font-size:1.25rem}
+.step p{color:var(--muted)}
+
+.alt{background:var(--cream)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.item{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:box-shadow .2s,transform .2s}
+.item:hover{transform:translateY(-4px);box-shadow:0 18px 30px -18px rgba(95,10,17,.45)}
+.pic{aspect-ratio:1/1;display:grid;place-items:center}
+.pic svg{width:68%;filter:drop-shadow(0 10px 8px rgba(0,0,0,.2))}
+.p1{background:var(--red);color:#fff}
+.p2{background:var(--red-deep);color:var(--rose)}
+.p3{background:var(--rose);color:var(--red)}
+.p4{background:var(--cream) var(--pin);color:var(--red-mid)}
+.item .info{padding:18px;display:flex;flex-direction:column;gap:4px;flex:1}
+.item h3{font-size:1.1rem}
+.item p{color:var(--muted);font-size:.92rem}
+.item button{margin-top:auto;padding:12px 0 0;background:none;border:0;color:var(--red);font:600 .95rem 'DM Sans',sans-serif;cursor:pointer;text-align:left}
+.item button:hover{text-decoration:underline}
+
+.dark{background:var(--red-deep) var(--weave);color:#fff}
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.feat{padding-top:20px;border-top:2px solid rgba(255,255,255,.35)}
+.feat h3{font-size:1.2rem;margin-bottom:8px}
+.feat p{color:#f0cdd0}
+
+/* order */
+#order{background:var(--red) var(--weave);color:#fff}
+.order{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.order h2{font-size:clamp(2rem,3.8vw,2.9rem);font-weight:800;letter-spacing:-.03em}
+.order .lead{margin-top:16px;color:#f6dcde;max-width:42ch}
+.order ul{margin-top:26px;padding:0;list-style:none;display:grid;gap:10px;color:#f6dcde}
+.order li::before{content:"\2713";margin-right:10px;font-weight:700;color:#fff}
+.order form{background:#fff;color:var(--ink);padding:30px;border-radius:18px;display:grid;gap:16px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.order form .btn{width:100%}
+#msg{min-height:1.3em;font-weight:600;color:var(--red);font-size:.95rem}
+
+footer{background:var(--red-deep);color:#e8c2c5;padding:36px 0;font-size:.9rem}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+
+@media(max-width:900px){
+  .hero .wrap,.order{grid-template-columns:1fr}
+  .steps,.feats{grid-template-columns:1fr}
+  .grid{grid-template-columns:1fr 1fr}
+  nav a:not(.btn){display:none}
+  section{padding:68px 0}
+  .hero{padding:48px 0 64px}
+}
+@media(max-width:480px){.grid{grid-template-columns:1fr}.row{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* ---- functional UI: tools, cart drawer, toast, mobile menu ---- */
+.tools{display:flex;align-items:center;gap:8px}
+.cart-btn,.burger{background:none;border:0;color:#fff;cursor:pointer;width:42px;height:42px;border-radius:10px;display:grid;place-items:center;position:relative}
+.cart-btn:hover,.burger:hover{background:rgba(255,255,255,.12)}
+.badge{position:absolute;top:2px;right:0;min-width:19px;height:19px;padding:0 5px;border-radius:10px;background:#fff;color:var(--red);font:700 .72rem/19px 'DM Sans',sans-serif;text-align:center}
+.badge[hidden]{display:none}
+.burger{display:none;gap:4px;align-content:center}
+.burger span{display:block;width:20px;height:2px;background:#fff;border-radius:2px}
+.price-line{display:flex;justify-content:space-between;align-items:baseline;font-size:.95rem;color:var(--muted)}
+.price-line b{font:800 1.5rem 'Bricolage Grotesque',sans-serif;color:var(--red)}
+.quote-link{text-align:center;font-size:.9rem;color:var(--red);font-weight:500}
+.item .actions{margin-top:auto;display:flex;gap:18px;padding-top:12px}
+.item .actions button{padding:0;margin:0}
+
+.overlay{position:fixed;inset:0;background:rgba(42,10,13,.55);z-index:40}
+.overlay[hidden]{display:none}
+body.lock{overflow:hidden}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(440px,100%);background:#fff;color:var(--ink);z-index:50;display:flex;flex-direction:column;
+  transform:translateX(100%);visibility:hidden;transition:transform .25s,visibility .25s;box-shadow:-20px 0 50px -20px rgba(0,0,0,.5)}
+.drawer.open{transform:none;visibility:visible}
+.d-head{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;background:var(--red);color:#fff}
+.d-head h2{font-size:1.3rem}
+.x{background:none;border:0;color:#fff;font-size:2rem;line-height:1;cursor:pointer;width:40px;height:40px}
+.d-body{padding:22px;overflow-y:auto;flex:1}
+#checkoutView{display:grid;gap:14px}
+#checkoutView[hidden],#cartView[hidden],#doneView[hidden]{display:none}
+.ci{display:grid;grid-template-columns:64px 1fr auto;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.thumb{width:64px;height:64px;background:var(--cream);border-radius:10px;display:grid;place-items:center;border:1px solid var(--line)}
+.thumb svg{width:84%}
+.ci-info{display:grid;gap:3px;align-content:start;min-width:0}
+.ci-info span{font-size:.82rem;color:var(--muted)}
+.qty{display:flex;align-items:center;gap:10px;margin-top:6px}
+.qty em{font-style:normal;font-weight:600;min-width:20px;text-align:center}
+.qty button{width:28px;height:28px;border-radius:8px;border:1.5px solid var(--line);background:#fff;color:var(--red);font-size:1.1rem;cursor:pointer}
+.qty button:hover{border-color:var(--red)}
+.ci-side{display:grid;align-content:space-between;justify-items:end}
+.rm,.link{background:none;border:0;color:var(--red);font:500 .85rem 'DM Sans',sans-serif;cursor:pointer;text-decoration:underline}
+.empty{padding:40px 0;text-align:center;color:var(--muted)}
+.sum{margin:18px 0 8px;display:grid;gap:8px;font-size:.95rem}
+.sum div{display:flex;justify-content:space-between}
+.sum .tot{padding-top:10px;border-top:1px solid var(--line);font:800 1.2rem 'Bricolage Grotesque',sans-serif;color:var(--red)}
+.note{font-size:.84rem;color:var(--muted);margin-bottom:14px}
+.d-body .btn{width:100%}
+.d-body .btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.msg{min-height:1.2em;font-size:.9rem;font-weight:600;color:var(--red)}
+#doneView{text-align:center;padding:40px 0}
+#doneView h3{font-size:1.6rem;color:var(--red);margin-bottom:12px}
+#doneView p{color:var(--muted);margin-bottom:24px}
+
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,30px);background:var(--red-deep);color:#fff;padding:12px 22px;border-radius:10px;
+  font-weight:500;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:60}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+@media(max-width:900px){
+  .burger{display:grid}
+  .site-header nav{display:none}
+  .site-header nav.open{display:flex;flex-direction:column;align-items:stretch;gap:4px;position:absolute;top:68px;left:0;right:0;background:var(--red-deep);padding:14px 24px 22px;border-bottom:1px solid rgba(255,255,255,.12)}
+  .site-header nav.open a{display:block;padding:10px 0}
+  .site-header nav.open .btn{margin-top:8px;color:var(--red)}
+}
+nav a.btn,nav a.btn:hover{color:var(--red)}
+
+/* ---- v3: five garments, graphics, ready-made styles ---- */
+.stage svg{overflow:visible}
+.btn.outline{background:#fff;color:var(--red);border:1.5px solid var(--red);padding:11px 16px}
+.btn.outline:hover{background:var(--rose)}
+.gfx{display:grid;gap:10px;padding:14px;border:1.5px dashed var(--line);border-radius:12px;background:var(--cream)}
+.gfx .lab{margin:0}
+.gfx select:disabled{opacity:.5}
+input[type=range]{padding:0;border:0;background:none;accent-color:var(--red);height:28px}
+input[type=range]:focus{box-shadow:none}
+.up-info{display:flex;justify-content:space-between;align-items:center;gap:10px;font-size:.85rem;color:var(--muted)}
+.up-info[hidden]{display:none}
+.up-info span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+.svc{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.svc button{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 12px 16px;cursor:pointer;display:grid;justify-items:center;gap:2px;
+  font-family:'DM Sans',sans-serif;color:var(--ink);transition:transform .2s,box-shadow .2s,border-color .2s}
+.svc button:hover{transform:translateY(-4px);border-color:var(--red);box-shadow:0 16px 28px -18px rgba(95,10,17,.5)}
+.svc svg{width:78%;color:var(--red);margin-bottom:8px}
+.svc b{font:800 1.05rem 'Bricolage Grotesque',sans-serif}
+.svc span{font-size:.85rem;color:var(--muted)}
+
+.chips{display:flex;gap:10px;flex-wrap:wrap;margin:-16px 0 30px}
+.chips button{padding:9px 20px;border-radius:999px;border:1.5px solid var(--red);background:#fff;color:var(--red);font:600 .92rem 'DM Sans',sans-serif;cursor:pointer;transition:background .15s,color .15s}
+.chips button:hover{background:var(--rose)}
+.chips button[aria-pressed="true"]{background:var(--red);color:#fff}
+
+.pic svg{width:86%}
+.st-alt{background:var(--red)}
+.st-gothic{background:#2a0a0d}
+.st-indie{background:var(--rose)}
+.st-grunge{background:#6a1a20 var(--weave)}
+.st-minimal{background:var(--cream) var(--pin)}
+
+@media(max-width:900px){.svc{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:560px){.svc{grid-template-columns:repeat(2,1fr)}}
+.stage{position:relative}
+.size-tag{position:absolute;left:14px;bottom:14px;background:var(--red);color:#fff;padding:6px 14px;border-radius:999px;font-size:.82rem;font-weight:600}
+
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <!-- garments -->
+  <symbol id="g-tee" viewBox="0 0 300 300"><path fill="currentColor" stroke="rgba(0,0,0,.22)" stroke-width="2" d="M100 30 60 45 20 95l35 20 20-20v175h150V95l20 20 35-20-40-50-40-15q-50 30-100 0z"/><path fill="none" stroke="rgba(0,0,0,.2)" stroke-width="3" d="M100 30q50 30 100 0"/></symbol>
+  <symbol id="g-shirt" viewBox="0 0 300 300"><path fill="currentColor" stroke="rgba(0,0,0,.22)" stroke-width="2" d="M100 28 55 45 16 205l36 8 24-98v160h148V115l24 98 36-8-39-160-45-17-50 34z"/><path fill="rgba(255,255,255,.28)" stroke="rgba(0,0,0,.22)" stroke-width="2" d="M100 28l50 34-14 22-48-40zM200 28l-50 34 14 22 48-40z"/><path fill="none" stroke="rgba(0,0,0,.25)" stroke-width="2" d="M150 62v206"/><g fill="rgba(0,0,0,.3)"><circle cx="150" cy="100" r="3"/><circle cx="150" cy="140" r="3"/><circle cx="150" cy="180" r="3"/><circle cx="150" cy="220" r="3"/></g></symbol>
+  <symbol id="g-hood" viewBox="0 0 300 300"><path fill="currentColor" stroke="rgba(0,0,0,.22)" stroke-width="2" d="M105 28q45 45 90 0l45 20 40 120-32 12-8-40v142H60V140l-8 40-32-12 40-120z"/><path fill="rgba(0,0,0,.22)" d="M105 28q45 45 90 0-8 38-45 46-37-8-45-46z"/><path fill="none" stroke="rgba(0,0,0,.2)" stroke-width="3" d="M100 230h100l12 30H88z"/></symbol>
+  <symbol id="g-pants" viewBox="0 0 300 300"><path fill="currentColor" stroke="rgba(0,0,0,.22)" stroke-width="2" d="M92 14h116l22 272h-62l-18-170-18 170H70z"/><path fill="none" stroke="rgba(0,0,0,.25)" stroke-width="3" d="M92 34h116M150 34v82"/></symbol>
+  <symbol id="g-jeans" viewBox="0 0 300 300"><path fill="currentColor" stroke="rgba(0,0,0,.25)" stroke-width="2" d="M92 14h116l22 272h-62l-18-170-18 170H70z"/><path fill="none" stroke="rgba(255,255,255,.55)" stroke-width="2" stroke-dasharray="5 4" d="M92 34h116M150 34v82M98 42q14 4 22 30M202 42q-14 4-22 30M104 276 118 130M196 276 182 130"/></symbol>
+  <!-- graphics -->
+  <symbol id="a-skull" viewBox="0 0 100 100"><path fill="currentColor" fill-rule="evenodd" d="M50 8C28 8 14 24 14 44c0 12 6 20 14 25v13h10v-8h6v8h12v-8h6v8h10V69c8-5 14-13 14-25C86 24 72 8 50 8zM31 46a9 9 0 1018 0 9 9 0 10-18 0zM51 46a9 9 0 1018 0 9 9 0 10-18 0zM50 56l-5 9h10z"/></symbol>
+  <symbol id="a-moon" viewBox="0 0 100 100"><path fill="currentColor" d="M62 8a42 42 0 000 84a50 50 0 010-84z"/></symbol>
+  <symbol id="a-bolt" viewBox="0 0 100 100"><path fill="currentColor" d="M58 4 20 56h26L38 96l44-56H54z"/></symbol>
+  <symbol id="a-rose" viewBox="0 0 100 100"><g fill="currentColor"><circle cx="50" cy="25" r="18"/><circle cx="75" cy="43" r="18"/><circle cx="66" cy="72" r="18"/><circle cx="34" cy="72" r="18"/><circle cx="25" cy="43" r="18"/></g><circle cx="50" cy="50" r="11" fill="#fff" opacity=".4"/></symbol>
+  <symbol id="a-mushroom" viewBox="0 0 100 100"><path fill="currentColor" d="M10 52C10 28 28 12 50 12s40 16 40 40zM38 52h24v34q0 8-12 8t-12-8z"/><g fill="#fff" opacity=".45"><circle cx="34" cy="34" r="7"/><circle cx="62" cy="28" r="6"/><circle cx="70" cy="44" r="5"/></g></symbol>
+  <symbol id="a-cross" viewBox="0 0 100 100"><path fill="currentColor" d="M42 6h16v28h28v16H58v44H42V50H14V34h28z"/></symbol>
+  <symbol id="a-star" viewBox="0 0 100 100"><path fill="currentColor" d="m50 6 13 28 30 4-22 21 6 30-27-15-27 15 6-30L7 38l30-4z"/></symbol>
+</svg>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="#top">Custom<span>ique</span></a>
+    <nav id="nav" aria-label="Main">
+      <a href="#services">What we make</a>
+      <a href="#styles">Ready-made styles</a>
+      <a href="#how">How it works</a>
+      <a class="btn sm" href="#order">Get a quote</a>
+    </nav>
+    <div class="tools">
+      <button type="button" class="cart-btn" id="cartBtn" aria-label="Open cart">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7a3 3 0 016 0"/></svg>
+        <span class="badge" id="badge" hidden>0</span>
+      </button>
+      <button type="button" class="burger" id="burger" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <h1>Wear your own style. Alt, gothic, indie or all yours.</h1>
+        <p class="lead">Customise shirts, T-shirts, hoodies, pants and jeans with your own text and artwork, or start from one of our ready-made designs.</p>
+        <div class="cta">
+          <a class="btn" href="#studio">Start designing</a>
+          <a class="btn ghost" href="#styles">Browse ready-made</a>
+        </div>
+        <div class="stats">
+          <div><b>5 pieces</b><span>Tops &amp; bottoms</span></div>
+          <div><b>Your artwork</b><span>Upload any image</span></div>
+          <div><b>Free proof</b><span>Approve before we print</span></div>
+        </div>
+      </div>
+
+      <div class="studio" id="studio">
+        <div class="stage"><svg id="preview" viewBox="0 0 300 300" role="img" aria-label="Live preview of your design"><g style="color:#8e1019"><use href="#g-tee"/></g></svg>
+          <div class="size-tag" id="sizeTag">T-shirt · size M</div></div>
+        <div class="controls">
+          <div class="row">
+            <div><label for="garment">Piece</label>
+              <select id="garment">
+                <option value="tee">T-shirt</option><option value="shirt">Shirt</option><option value="hood">Hoodie</option>
+                <option value="pants">Pants</option><option value="jeans">Jeans</option>
+              </select></div>
+            <div><label for="txt">Print text</label><input type="text" id="txt" maxlength="20" placeholder="Optional" autocomplete="off"></div>
+          </div>
+          <div><span class="lab">Fabric colour</span><div class="sw" id="fab"></div></div>
+          <div><span class="lab">Text &amp; graphic colour</span><div class="sw" id="ink"></div></div>
+          <div class="gfx">
+            <span class="lab">Graphic</span>
+            <div class="row">
+              <select id="art" aria-label="Choose one of our graphics"></select>
+              <button type="button" class="btn outline" id="upBtn">Upload yours</button>
+            </div>
+            <input type="file" id="upload" accept="image/*" hidden>
+            <div class="up-info" id="upInfo" hidden><span id="upName"></span><button type="button" class="link" id="upRemove">Remove</button></div>
+            <div class="row">
+              <div><label for="gScale">Graphic size</label><input type="range" id="gScale" min="40" max="140" value="100"></div>
+              <div><label for="gY">Position</label><input type="range" id="gY" min="-40" max="40" value="0"></div>
+            </div>
+          </div>
+          <div class="row">
+            <div><label for="sSize">Size</label><select id="sSize"><option>XS</option><option>S</option><option selected>M</option><option>L</option><option>XL</option><option>XXL</option></select></div>
+            <div><label for="sQty">Quantity</label><input type="number" id="sQty" min="1" max="99" value="1"></div>
+          </div>
+          <div class="price-line"><span>Price</span><b id="sPrice">200.000₫</b></div>
+          <button class="btn solid" type="button" id="addBtn">Add to cart</button>
+          <a class="quote-link" href="#order" id="useDesign">Request a quote for this design instead</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head"><h2>What we customise</h2><p>Pick a piece to open it in the studio.</p></div>
+      <div class="svc">
+        <button type="button" data-g="tee"><svg viewBox="0 0 300 300"><use href="#g-tee"/></svg><b>T-shirt</b><span>from 200.000₫</span></button>
+        <button type="button" data-g="shirt"><svg viewBox="0 0 300 300"><use href="#g-shirt"/></svg><b>Shirt</b><span>from 280.000₫</span></button>
+        <button type="button" data-g="hood"><svg viewBox="0 0 300 300"><use href="#g-hood"/></svg><b>Hoodie</b><span>from 440.000₫</span></button>
+        <button type="button" data-g="pants"><svg viewBox="0 0 300 300"><use href="#g-pants"/></svg><b>Pants</b><span>from 320.000₫</span></button>
+        <button type="button" data-g="jeans"><svg viewBox="0 0 300 300"><use href="#g-jeans"/></svg><b>Jeans</b><span>from 480.000₫</span></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="styles" class="alt">
+    <div class="wrap">
+      <div class="head"><h2>Ready-made styles</h2><p>Add one as it is, or open it in the studio and make it your own.</p></div>
+      <div class="chips" id="chips" role="group" aria-label="Filter by style"><button type="button" aria-pressed="true">All</button><button type="button" aria-pressed="false">Alt</button><button type="button" aria-pressed="false">Gothic</button><button type="button" aria-pressed="false">Indie</button><button type="button" aria-pressed="false">Grunge</button><button type="button" aria-pressed="false">Minimal</button></div>
+      <div class="grid" id="designGrid"><article class="item"><div class="pic st-gothic"><svg viewBox="0 0 300 300" aria-hidden="true"><g style="color:#1c0d0e"><use href="#g-tee"></use></g><use href="#a-rose" x="102" y="64" width="96" height="96" style="color:#f3d6d8"></use><text x="150" y="178" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="16" fill="#f3d6d8">nightbloom</text></svg></div><div class="info"><h3>Night Garden</h3><p>Gothic · T-shirt · 260.000₫</p><div class="actions"><button type="button" data-do="edit">Customise</button><button type="button" data-do="add">Add to cart</button></div></div></article><article class="item"><div class="pic st-gothic"><svg viewBox="0 0 300 300" aria-hidden="true"><g style="color:#1c0d0e"><use href="#g-hood"></use></g><use href="#a-skull" x="102" y="110" width="96" height="96" style="color:#ffffff"></use><text x="150" y="224" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="15" fill="#ffffff">grave shift</text></svg></div><div class="info"><h3>Grave Shift</h3><p>Gothic · Hoodie · 500.000₫</p><div class="actions"><button type="button" data-do="edit">Customise</button><button type="button" data-do="add">Add to cart</button></div></div></article><article class="item"><div class="pic st-gothic"><svg viewBox="0 0 300 300" aria-hidden="true"><g style="color:#8e1019"><use href="#g-shirt"></use></g><use href="#a-cross" x="168" y="90" width="56" height="56" style="color:#ffffff"></use></svg></div><div class="info"><h3>Velvet Cross</h3><p>Gothic · Shirt · 320.000₫</p><div class="actions"><button type="button" data-do="edit">Customise</button><button type="button" data-do="add">Add to cart</button></div></div></article><article class="item"><div class="pic st-indie"><svg viewBox="0 0 300 300" aria-hidden="true"><g style="color:#e9dfd2"><use href="#g-tee"></use></g><use href="#a-mushroom" x="102" y="64" width="96" height="96" style="color:#8e1019"></use><text x="150" y="178" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="15" fill="#8e1019">soft static</text></svg></div><div class="info"><h3>Soft Static</h3><p>Indie · T-shirt · 260.000₫</p><div class="actions"><button type="button" data-do="edit">Customise</button><button type="button" data-do="add">Add to cart</button></div></div></article><article class="item"><div class="pic st-indie"><svg viewBox="0 0 300 300" aria-hidden="true"><g style="color:#f3d6d8"><use href="#g-hood"></use></g><use href="#a-moon" x="102" y="110" width="96" height="96" style="color:#8e1019"></use><text x="150" y="224" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="23" fill="#8e1019">moonlit</text></svg></div><div class="info"><h3>Moonlit Walk</h3><p>Indie · Hoodie · 500.000₫</p><div class="actions"><button type="button" data-do="edit">Customise</button><button type="button" data-do="add">Add to cart</button></div></div></article><article class="item"><div class="pic st-indie"><svg viewBox="0 0 300 300" aria-hidden="true"><g style="color:#2d3f63"><use href="#g-jeans"></use></g><use href="#a-rose" x="88" y="72" width="52" height="52" style="color:#ffffff"></use></svg></div><div class="info"><h3>Daisy Chain</h3><p>Indie · Jeans · 520.000₫</p><div class="actions"><button type="button" data-do="edit">Customise</button><button type="button" data-do="add">Add to cart</button></div></div></article><article class="item"><div class="pic st-alt"><svg viewBox="0 0 300 300" aria-hidden="true"><g style="color:#ffffff"><use href="#g-tee"></use></g><use href="#a-bolt" x="102" y="64" width="96" height="96" style="color:#8e1019"></use><text x="150" y="178" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="20" fill="#8e1019">overload</text></svg></div><div class="info"><h3>Overload</h3><p>Alt · T-shirt · 260.000₫</p><div class="actions"><button type="button" data-do="edit">Customise</button><button type="button" data-do="add">Add to cart</button></div></div></article><article class="item"><div class="pic st-alt"><svg viewBox="0 0 300 300" aria-hidden="true"><g style="color:#1c0d0e"><use href="#g-pants"></use></g><use href="#a-star" x="88" y="62" width="52" height="52" style="color:#d9363e"></use><text x="114" y="132" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="22" fill="#d9363e">hex</text></svg></div><div class="info"><h3>Hex Pants</h3><p>Alt · Pants · 380.000₫</p><div class="actions"><button type="button" data-do="edit">Customise</button><button type="button" data-do="add">Add to cart</button></div></div></article><article class="item"><div class="pic st-grunge"><svg viewBox="0 0 300 300" aria-hidden="true"><g style="color:#6b6b6b"><use href="#g-jeans"></use></g><use href="#a-skull" x="88" y="62" width="52" height="52" style="color:#ffffff"></use><text x="114" y="132" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="11" fill="#ffffff">no rules</text></svg></div><div class="info"><h3>No Rules</h3><p>Grunge · Jeans · 540.000₫</p><div class="actions"><button type="button" data-do="edit">Customise</button><button type="button" data-do="add">Add to cart</button></div></div></article><article class="item"><div class="pic st-minimal"><svg viewBox="0 0 300 300" aria-hidden="true"><g style="color:#ffffff"><use href="#g-shirt"></use></g><text x="196" y="121.33333333333333" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="10" fill="#8e1019">customique</text></svg></div><div class="info"><h3>Plain Rebel</h3><p>Minimal · Shirt · 300.000₫</p><div class="actions"><button type="button" data-do="edit">Customise</button><button type="button" data-do="add">Add to cart</button></div></div></article></div>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="wrap">
+      <div class="head"><h2>How it works</h2><p>From idea to your door in three steps.</p></div>
+      <div class="steps">
+        <div class="step"><i>01</i><h3>Design or choose</h3><p>Type your text, upload your artwork, or pick a ready-made style. Preview it live on the garment.</p></div>
+        <div class="step"><i>02</i><h3>Approve the proof</h3><p>We send a free digital proof within one working day. Nothing is printed until you say yes.</p></div>
+        <div class="step"><i>03</i><h3>We print and ship</h3><p>Each piece is made to order and delivered in 5–7 days.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="why" class="dark">
+    <div class="wrap">
+      <div class="head"><h2>Built for quality</h2><p>What you get with every Customique order.</p></div>
+      <div class="feats">
+        <div class="feat"><h3>Your art, printed right</h3><p>Upload PNG, JPG or SVG. We check resolution and placement on every proof.</p></div>
+        <div class="feat"><h3>Durable printing</h3><p>Sharp, long-lasting prints that stay crisp on cotton, fleece and denim.</p></div>
+        <div class="feat"><h3>Easy swaps</h3><p>Wrong size? We exchange it for free within 14 days.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="order">
+    <div class="wrap order">
+      <div>
+        <h2>Request your quote</h2>
+        <p class="lead">Planning a team order, a collection or a complex design? Tell us what you need. We reply within one working day with a price and a free proof.</p>
+        <ul><li>No obligation</li><li>Free design proof</li><li>Send artwork by replying to our email</li><li>Discounts for teams and events</li></ul>
+      </div>
+      <form id="form" novalidate>
+        <div><label for="name">Full name</label><input type="text" id="name" required autocomplete="name"></div>
+        <div><label for="email">Email</label><input type="email" id="email" required autocomplete="email"></div>
+        <div class="row">
+          <div><label for="qPiece">Piece</label>
+            <select id="qPiece"><option value="tee">T-shirt</option><option value="shirt">Shirt</option><option value="hood">Hoodie</option><option value="pants">Pants</option><option value="jeans">Jeans</option></select></div>
+          <div><label for="qty">Quantity</label><input type="number" id="qty" min="1" max="999" value="1"></div>
+        </div>
+        <div><label for="size">Size(s)</label><input type="text" id="size" placeholder="e.g. M, or 5 x M and 5 x L"></div>
+        <div><label for="note">Design details</label><textarea id="note" rows="4" placeholder="Style, colours, text, artwork..."></textarea></div>
+        <button class="btn solid" type="submit">Send request</button>
+        <div id="msg" class="msg" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© 2026 Customique. All rights reserved.</span><span>hello@customique.com</span></div>
+</footer>
+
+<div class="overlay" id="overlay" hidden></div>
+<aside class="drawer" id="cart" aria-hidden="true" aria-label="Shopping cart">
+  <div class="d-head"><h2>Your cart</h2><button type="button" class="x" id="closeCart" aria-label="Close cart">&times;</button></div>
+  <div class="d-body">
+    <div id="cartView">
+      <div id="cartItems"></div>
+      <div class="sum" id="sum"></div>
+      <p class="note">Free shipping over 1.000.000₫. 10% off when you order 10 or more pieces.</p>
+      <button class="btn solid" type="button" id="toCheckout">Checkout</button>
+    </div>
+    <form id="checkoutView" hidden novalidate>
+      <div><label for="cName">Full name</label><input type="text" id="cName" autocomplete="name"></div>
+      <div><label for="cEmail">Email</label><input type="email" id="cEmail" autocomplete="email"></div>
+      <div><label for="cPhone">Phone</label><input type="tel" id="cPhone" autocomplete="tel"></div>
+      <div><label for="cAddr">Delivery address</label><textarea id="cAddr" rows="3" autocomplete="street-address"></textarea></div>
+      <p class="note">Payment: cash on delivery.</p>
+      <button class="btn solid" type="submit">Place order</button>
+      <button class="link" type="button" id="backCart">Back to cart</button>
+      <div id="cMsg" class="msg" role="status" aria-live="polite"></div>
+    </form>
+    <div id="doneView" hidden>
+      <h3>Thank you!</h3>
+      <p id="doneText"></p>
+      <button class="btn solid" type="button" id="doneClose">Continue shopping</button>
+    </div>
+  </div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<noscript><p style="text-align:center;padding:12px;background:#fff;color:#8e1019">Please enable JavaScript to use the design studio.</p></noscript>
+<script>
+/* Customique – studio (text, art, uploads), ready-made styles, cart, checkout, quote, menu */
+(function () {
+  'use strict';
+
+  /* ---------- config ---------- */
+  var BASE = { tee: 200000, shirt: 280000, hood: 440000, pants: 320000, jeans: 480000 }; // VND
+  var LABEL = { tee: 'T-shirt', shirt: 'Shirt', hood: 'Hoodie', pants: 'Pants', jeans: 'Jeans' };
+  var AREA = { tee: { x: 150, y: 122, w: 96 }, shirt: { x: 196, y: 118, w: 56 }, hood: { x: 150, y: 168, w: 96 },
+               pants: { x: 114, y: 98, w: 52 }, jeans: { x: 114, y: 98, w: 52 } };
+  var ARTS = { none: 'No graphic', skull: 'Skull', moon: 'Crescent moon', bolt: 'Lightning bolt', rose: 'Rose',
+               mushroom: 'Mushroom', cross: 'Cross', star: 'Star' };
+  var TOP_SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'], BOTTOM_SIZES = ['28', '30', '32', '34', '36', '38'];
+  var FEE_TEXT = 20000, FEE_ART = 40000, FEE_UPLOAD = 60000;
+  var SHIPPING = 30000, FREE_SHIP = 1000000, BULK_QTY = 10, BULK_OFF = 0.1;
+  var COLORS = [
+    { hex: '#8e1019', name: 'Dark red' }, { hex: '#ffffff', name: 'White' }, { hex: '#1c0d0e', name: 'Black' },
+    { hex: '#d9363e', name: 'Red' },      { hex: '#f3d6d8', name: 'Pink' },  { hex: '#e9dfd2', name: 'Beige' },
+    { hex: '#2d3f63', name: 'Denim blue' }, { hex: '#6b6b6b', name: 'Grey' }
+  ];
+  var STYLES = ['Alt', 'Gothic', 'Indie', 'Grunge', 'Minimal'];
+  var DESIGNS = [
+    { id: 'd1', name: 'Night Garden',  style: 'Gothic',  g: 'tee',   fabric: '#1c0d0e', ink: '#f3d6d8', art: 'rose',     text: 'nightbloom' },
+    { id: 'd2', name: 'Grave Shift',   style: 'Gothic',  g: 'hood',  fabric: '#1c0d0e', ink: '#ffffff', art: 'skull',    text: 'grave shift' },
+    { id: 'd3', name: 'Velvet Cross',  style: 'Gothic',  g: 'shirt', fabric: '#8e1019', ink: '#ffffff', art: 'cross',    text: '' },
+    { id: 'd4', name: 'Soft Static',   style: 'Indie',   g: 'tee',   fabric: '#e9dfd2', ink: '#8e1019', art: 'mushroom', text: 'soft static' },
+    { id: 'd5', name: 'Moonlit Walk',  style: 'Indie',   g: 'hood',  fabric: '#f3d6d8', ink: '#8e1019', art: 'moon',     text: 'moonlit' },
+    { id: 'd6', name: 'Daisy Chain',   style: 'Indie',   g: 'jeans', fabric: '#2d3f63', ink: '#ffffff', art: 'rose',     text: '' },
+    { id: 'd7', name: 'Overload',      style: 'Alt',     g: 'tee',   fabric: '#ffffff', ink: '#8e1019', art: 'bolt',     text: 'overload' },
+    { id: 'd8', name: 'Hex Pants',     style: 'Alt',     g: 'pants', fabric: '#1c0d0e', ink: '#d9363e', art: 'star',     text: 'hex' },
+    { id: 'd9', name: 'No Rules',      style: 'Grunge',  g: 'jeans', fabric: '#6b6b6b', ink: '#ffffff', art: 'skull',    text: 'no rules' },
+    { id: 'd10', name: 'Plain Rebel',  style: 'Minimal', g: 'shirt', fabric: '#ffffff', ink: '#8e1019', art: 'none',     text: 'customique' }
+  ];
+  var STYLE_CLASS = { Alt: 'st-alt', Gothic: 'st-gothic', Indie: 'st-indie', Grunge: 'st-grunge', Minimal: 'st-minimal' };
+
+  /* ---------- helpers ---------- */
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var money = function (n) { return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.') + '₫'; };
+  var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
+  var nameOf = function (hex) { for (var i = 0; i < COLORS.length; i++) if (COLORS[i].hex === hex) return COLORS[i].name; return hex; };
+  var store = {
+    get: function (k, d) { try { var v = JSON.parse(localStorage.getItem(k)); return v == null ? d : v; } catch (e) { return d; } },
+    set: function (k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch (e) { return false; } }
+  };
+  var clampQty = function (v) { v = parseInt(v, 10); return isNaN(v) ? 1 : Math.max(1, Math.min(99, v)); };
+  var validEmail = function (s) { return /^\S+@\S+\.\S+$/.test(s); };
+  var isBottom = function (g) { return g === 'pants' || g === 'jeans'; };
+  var hasArt = function (c) { return !!c.up || (c.art && c.art !== 'none'); };
+  var describeArt = function (c) { return c.up ? 'your graphic' : (hasArt(c) ? ARTS[c.art].toLowerCase() : ''); };
+
+  var toastTimer;
+  function toast(msg) {
+    var t = $('#toast'); t.textContent = msg; t.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.classList.remove('show'); }, 2600);
+  }
+
+  /* ---------- pricing ---------- */
+  function unit(c) { return BASE[c.g] + (c.text ? FEE_TEXT : 0) + (c.up ? FEE_UPLOAD : (hasArt(c) ? FEE_ART : 0)); }
+
+  /* ---------- garment scene (preview, cards, cart thumbnails) ---------- */
+  function scene(c) {
+    var a = AREA[c.g], s = (c.scale || 100) / 100, w = a.w * s, dy = c.dy || 0, text = (c.text || '').trim();
+    var top = a.y - w / 2 - (text ? 10 : 0) + dy, out = '<g style="color:' + c.fabric + '"><use href="#g-' + c.g + '"/></g>';
+    if (c.up) {
+      out += '<image href="' + c.up + '" x="' + (a.x - w / 2) + '" y="' + top + '" width="' + w + '" height="' + w + '" preserveAspectRatio="xMidYMid meet"/>';
+    } else if (c.art && ARTS[c.art] && c.art !== 'none') {
+      out += '<use href="#a-' + c.art + '" x="' + (a.x - w / 2) + '" y="' + top + '" width="' + w + '" height="' + w + '" style="color:' + c.ink + '"/>';
+    }
+    if (text) {
+      var fs = Math.max(8, Math.min(24, Math.round(a.w * 1.7 / Math.max(text.length, 4))));
+      var ty = hasArt(c) ? top + w + 18 : a.y + dy + fs / 3;
+      out += '<text x="' + a.x + '" y="' + ty + '" text-anchor="middle" font-family="Bricolage Grotesque, Arial Black, sans-serif" font-weight="800" font-size="' + fs + '" fill="' + c.ink + '">' + esc(text) + '</text>';
+    }
+    return out;
+  }
+
+  /* ---------- mobile menu ---------- */
+  var nav = $('#nav'), burger = $('#burger');
+  function setMenu(open) { nav.classList.toggle('open', open); burger.setAttribute('aria-expanded', open ? 'true' : 'false'); }
+  burger.addEventListener('click', function () { setMenu(!nav.classList.contains('open')); });
+  $$('#nav a').forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+
+  /* ---------- studio ---------- */
+  var design = { g: 'tee', fabric: COLORS[0].hex, ink: '#ffffff', text: '', art: 'none', up: null, upName: '', scale: 100, dy: 0 };
+  var prev = $('#preview'), garment = $('#garment'), txt = $('#txt'), artSel = $('#art'),
+      sSize = $('#sSize'), sQty = $('#sQty'), gScale = $('#gScale'), gY = $('#gY');
+
+  Object.keys(ARTS).forEach(function (k) {
+    var o = document.createElement('option'); o.value = k; o.textContent = ARTS[k]; artSel.appendChild(o);
+  });
+
+  function setSizes(g, keep) {
+    var list = isBottom(g) ? BOTTOM_SIZES : TOP_SIZES, def = isBottom(g) ? '32' : 'M';
+    sSize.textContent = '';
+    list.forEach(function (s) { var o = document.createElement('option'); o.value = o.textContent = s; sSize.appendChild(o); });
+    sSize.value = list.indexOf(keep) >= 0 ? keep : def;
+    if (typeof renderStudio === 'function' && prev) renderStudio();
+  }
+
+  function renderStudio() {
+    design.text = txt.value.trim();
+    prev.innerHTML = scene(design);
+    $('#sPrice').textContent = money(unit(design) * clampQty(sQty.value));
+    $('#sizeTag').textContent = LABEL[design.g] + ' · ' + (isBottom(design.g) ? 'waist ' : 'size ') + sSize.value + ' · qty ' + clampQty(sQty.value);
+  }
+
+  function buildSwatches(id, key) {
+    var box = $('#' + id);
+    COLORS.forEach(function (c) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.style.background = c.hex; b.setAttribute('aria-label', c.name);
+      b.addEventListener('click', function () { design[key] = c.hex; syncSwatches(); renderStudio(); });
+      box.appendChild(b);
+    });
+  }
+  function syncSwatches() {
+    [['fab', 'fabric'], ['ink', 'ink']].forEach(function (p) {
+      $$('#' + p[0] + ' button').forEach(function (b, i) {
+        b.setAttribute('aria-pressed', COLORS[i].hex === design[p[1]] ? 'true' : 'false');
+      });
+    });
+  }
+  function syncUpload() {
+    $('#upInfo').hidden = !design.up;
+    $('#upName').textContent = design.up ? 'Using: ' + design.upName : '';
+    artSel.disabled = !!design.up;
+  }
+
+  buildSwatches('fab', 'fabric'); buildSwatches('ink', 'ink');
+  setSizes('tee'); syncSwatches(); syncUpload();
+
+  sSize.addEventListener('change', renderStudio);
+  garment.addEventListener('change', function () { design.g = garment.value; setSizes(design.g, sSize.value); renderStudio(); });
+  txt.addEventListener('input', renderStudio);
+  sQty.addEventListener('input', renderStudio);
+  artSel.addEventListener('change', function () { design.art = artSel.value; renderStudio(); });
+  gScale.addEventListener('input', function () { design.scale = +gScale.value; renderStudio(); });
+  gY.addEventListener('input', function () { design.dy = +gY.value; renderStudio(); });
+
+  function applyDesign(cfg) {
+    design = { g: cfg.g, fabric: cfg.fabric, ink: cfg.ink, text: cfg.text || '', art: cfg.art || 'none',
+               up: null, upName: '', scale: cfg.scale || 100, dy: cfg.dy || 0 };
+    garment.value = design.g; txt.value = design.text; artSel.value = design.art;
+    gScale.value = design.scale; gY.value = design.dy;
+    setSizes(design.g); syncSwatches(); syncUpload(); renderStudio();
+    $('#studio').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  /* graphic upload (resized in the browser to keep the cart light) */
+  $('#upBtn').addEventListener('click', function () { $('#upload').click(); });
+  $('#upload').addEventListener('change', function (e) {
+    var f = e.target.files[0]; e.target.value = '';
+    if (!f) return;
+    if (!/^image\//.test(f.type)) { toast('Please choose an image file (PNG, JPG, SVG).'); return; }
+    if (f.size > 8 * 1024 * 1024) { toast('That image is over 8 MB. Please use a smaller file.'); return; }
+    var fr = new FileReader();
+    fr.onerror = function () { toast('Could not read that file.'); };
+    fr.onload = function () {
+      var im = new Image();
+      im.onerror = function () { toast('Could not open that image.'); };
+      im.onload = function () {
+        var iw = im.width || 300, ih = im.height || 300, r = Math.min(1, 420 / Math.max(iw, ih)),
+            cv = document.createElement('canvas');
+        cv.width = Math.max(1, Math.round(iw * r)); cv.height = Math.max(1, Math.round(ih * r));
+        cv.getContext('2d').drawImage(im, 0, 0, cv.width, cv.height);
+        design.up = cv.toDataURL('image/png'); design.upName = f.name;
+        syncUpload(); renderStudio(); toast('Graphic added');
+      };
+      im.src = fr.result;
+    };
+    fr.readAsDataURL(f);
+  });
+  $('#upRemove').addEventListener('click', function () { design.up = null; design.upName = ''; syncUpload(); renderStudio(); });
+
+  /* services tiles */
+  $$('.svc button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      design.g = b.getAttribute('data-g'); garment.value = design.g; setSizes(design.g); renderStudio();
+      $('#studio').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  });
+
+  /* ---------- ready-made styles ---------- */
+  var activeStyle = 'All';
+  function renderChips() {
+    var box = $('#chips'); box.textContent = '';
+    ['All'].concat(STYLES).forEach(function (s) {
+      var b = document.createElement('button');
+      b.type = 'button'; b.textContent = s; b.setAttribute('aria-pressed', s === activeStyle ? 'true' : 'false');
+      b.addEventListener('click', function () { activeStyle = s; renderChips(); renderDesigns(); });
+      box.appendChild(b);
+    });
+  }
+  function renderDesigns() {
+    var grid = $('#designGrid'); grid.textContent = '';
+    DESIGNS.filter(function (d) { return activeStyle === 'All' || d.style === activeStyle; }).forEach(function (d) {
+      var card = document.createElement('article'); card.className = 'item';
+      card.innerHTML =
+        '<div class="pic ' + STYLE_CLASS[d.style] + '"><svg viewBox="0 0 300 300" aria-hidden="true">' + scene(d) + '</svg></div>' +
+        '<div class="info"><h3></h3><p></p><div class="actions">' +
+        '<button type="button" data-do="edit">Customise</button><button type="button" data-do="add">Add to cart</button></div></div>';
+      $('h3', card).textContent = d.name;
+      $('p', card).textContent = d.style + ' · ' + LABEL[d.g] + ' · ' + money(unit(d));
+      $('[data-do=edit]', card).addEventListener('click', function () { applyDesign(d); });
+      $('[data-do=add]', card).addEventListener('click', function () {
+        addToCart({ g: d.g, fabric: d.fabric, ink: d.ink, text: d.text, art: d.art, up: null, scale: 100, dy: 0,
+                    size: isBottom(d.g) ? '32' : 'M', qty: 1, name: d.name });
+      });
+      grid.appendChild(card);
+    });
+  }
+  renderChips(); renderDesigns();
+
+  /* ---------- cart ---------- */
+  var cart = store.get('cq2_cart', []);
+  var drawer = $('#cart'), overlay = $('#overlay'), lastFocus = null, warned = false;
+
+  function saveCart() {
+    var ok = store.set('cq2_cart', cart);
+    if (!ok && !warned && cart.some(function (c) { return c.up; })) {
+      warned = true; toast('Cart is kept for this visit only (browser storage is full).');
+    }
+    renderCart();
+  }
+  function sameItem(a, b) {
+    return a.g === b.g && a.fabric === b.fabric && a.ink === b.ink && a.text === b.text && a.art === b.art &&
+           a.up === b.up && a.scale === b.scale && a.dy === b.dy && a.size === b.size && a.name === b.name;
+  }
+  function addToCart(item) {
+    var found = cart.filter(function (c) { return sameItem(c, item); })[0];
+    if (found) found.qty = Math.min(99, found.qty + item.qty);
+    else { item.id = String(Date.now()) + Math.random().toString(16).slice(2, 6); cart.push(item); }
+    saveCart(); toast('Added to cart');
+  }
+  function totals() {
+    var qty = 0, sub = 0;
+    cart.forEach(function (c) { qty += c.qty; sub += unit(c) * c.qty; });
+    var disc = qty >= BULK_QTY ? sub * BULK_OFF : 0, after = sub - disc;
+    var ship = (!cart.length || after >= FREE_SHIP) ? 0 : SHIPPING;
+    return { qty: qty, sub: sub, disc: disc, ship: ship, total: after + ship };
+  }
+
+  function renderCart() {
+    var list = $('#cartItems'), t = totals();
+    list.textContent = '';
+    $('#badge').textContent = t.qty; $('#badge').hidden = t.qty === 0;
+    if (!cart.length) {
+      var p = document.createElement('p'); p.className = 'empty';
+      p.textContent = 'Your cart is empty. Design a piece or pick a ready-made style.'; list.appendChild(p);
+    }
+    cart.forEach(function (c) {
+      var row = document.createElement('div'); row.className = 'ci';
+      var th = document.createElement('div'); th.className = 'thumb';
+      th.innerHTML = '<svg viewBox="0 0 300 300" aria-hidden="true">' + scene(c) + '</svg>';
+      var info = document.createElement('div'); info.className = 'ci-info';
+      var h = document.createElement('b'); h.textContent = c.name || ('Custom ' + LABEL[c.g].toLowerCase());
+      var s = document.createElement('span');
+      s.textContent = 'Size ' + c.size + ' · ' + nameOf(c.fabric) + (c.text ? ' · "' + c.text + '"' : '') +
+        (hasArt(c) ? ' · ' + describeArt(c) : '');
+      var q = document.createElement('div'); q.className = 'qty';
+      var dec = btn('−', 'dec', c.id, 'Decrease quantity'), n = document.createElement('em'), inc = btn('+', 'inc', c.id, 'Increase quantity');
+      n.textContent = c.qty; q.appendChild(dec); q.appendChild(n); q.appendChild(inc);
+      info.appendChild(h); info.appendChild(s); info.appendChild(q);
+      var side = document.createElement('div'); side.className = 'ci-side';
+      var pr = document.createElement('b'); pr.textContent = money(unit(c) * c.qty);
+      var rm = btn('Remove', 'rm', c.id, 'Remove item'); rm.className = 'rm';
+      side.appendChild(pr); side.appendChild(rm);
+      row.appendChild(th); row.appendChild(info); row.appendChild(side); list.appendChild(row);
+    });
+    var rows = [['Subtotal', money(t.sub)]];
+    if (t.disc) rows.push(['Bulk discount (10%)', '−' + money(t.disc)]);
+    rows.push(['Shipping', cart.length ? (t.ship ? money(t.ship) : 'Free') : '—']);
+    rows.push(['Total', money(t.total)]);
+    var sum = $('#sum'); sum.textContent = '';
+    rows.forEach(function (r, i) {
+      var d = document.createElement('div'); if (i === rows.length - 1) d.className = 'tot';
+      var a = document.createElement('span'), b = document.createElement('span');
+      a.textContent = r[0]; b.textContent = r[1]; d.appendChild(a); d.appendChild(b); sum.appendChild(d);
+    });
+    $('#toCheckout').disabled = !cart.length;
+  }
+  function btn(label, act, id, aria) {
+    var b = document.createElement('button'); b.type = 'button'; b.textContent = label;
+    b.setAttribute('data-act', act); b.setAttribute('data-id', id); b.setAttribute('aria-label', aria); return b;
+  }
+
+  $('#cartItems').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-act]'); if (!b) return;
+    var id = b.getAttribute('data-id'), act = b.getAttribute('data-act');
+    var item = cart.filter(function (c) { return c.id === id; })[0]; if (!item) return;
+    if (act === 'inc') item.qty = Math.min(99, item.qty + 1);
+    if (act === 'dec') item.qty = Math.max(1, item.qty - 1);
+    if (act === 'rm') cart = cart.filter(function (c) { return c.id !== id; });
+    saveCart();
+  });
+
+  function showView(v) {
+    $('#cartView').hidden = v !== 'cart'; $('#checkoutView').hidden = v !== 'checkout'; $('#doneView').hidden = v !== 'done';
+  }
+  function openCart() {
+    lastFocus = document.activeElement; showView('cart'); renderCart();
+    drawer.classList.add('open'); drawer.setAttribute('aria-hidden', 'false');
+    overlay.hidden = false; document.body.classList.add('lock'); $('#closeCart').focus();
+  }
+  function closeCart() {
+    drawer.classList.remove('open'); drawer.setAttribute('aria-hidden', 'true');
+    overlay.hidden = true; document.body.classList.remove('lock');
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+  $('#cartBtn').addEventListener('click', openCart);
+  $('#closeCart').addEventListener('click', closeCart);
+  $('#doneClose').addEventListener('click', closeCart);
+  overlay.addEventListener('click', closeCart);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') { if (drawer.classList.contains('open')) closeCart(); setMenu(false); }
+  });
+  $('#toCheckout').addEventListener('click', function () { if (cart.length) showView('checkout'); });
+  $('#backCart').addEventListener('click', function () { showView('cart'); });
+
+  $('#addBtn').addEventListener('click', function () {
+    renderStudio();
+    addToCart({ g: design.g, fabric: design.fabric, ink: design.ink, text: design.text, art: design.art, up: design.up,
+                scale: design.scale, dy: design.dy, size: sSize.value, qty: clampQty(sQty.value), name: '' });
+  });
+
+  /* ---------- checkout ---------- */
+  $('#checkoutView').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var msg = $('#cMsg'), f = { name: $('#cName').value.trim(), email: $('#cEmail').value.trim(),
+                                phone: $('#cPhone').value.trim(), address: $('#cAddr').value.trim() };
+    if (!cart.length) { msg.textContent = 'Your cart is empty.'; return; }
+    if (!f.name || !validEmail(f.email) || f.phone.length < 6 || f.address.length < 8) {
+      msg.textContent = 'Please complete all fields with a valid email, phone and full address.'; return;
+    }
+    var t = totals();
+    var order = { id: 'CQ-' + Math.floor(100000 + Math.random() * 900000), date: new Date().toISOString(), customer: f,
+                  totals: t, payment: 'Cash on delivery',
+                  items: cart.map(function (c) { var o = {}; for (var k in c) o[k] = c[k]; if (o.up) o.up = 'uploaded image'; return o; }) };
+    var orders = store.get('cq2_orders', []); orders.push(order); store.set('cq2_orders', orders);
+    cart = []; saveCart(); e.target.reset(); msg.textContent = '';
+    $('#doneText').textContent = 'Order ' + order.id + ' is confirmed. Total ' + money(t.total) +
+      ', paid on delivery. We will email ' + f.email + ' with your free proof within one working day.';
+    showView('done');
+  });
+
+  /* ---------- quote form ---------- */
+  $('#useDesign').addEventListener('click', function () {
+    renderStudio();
+    $('#qPiece').value = design.g; $('#size').value = sSize.value; $('#qty').value = clampQty(sQty.value);
+    $('#note').value = 'Piece: ' + LABEL[design.g] + '\nFabric colour: ' + nameOf(design.fabric) +
+      '\nText: ' + (design.text || 'none') + '\nGraphic: ' + (describeArt(design) || 'none') +
+      '\nText & graphic colour: ' + nameOf(design.ink) +
+      (design.up ? '\n(I will send my artwork file ' + design.upName + ' by email.)' : '');
+  });
+
+  $('#form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var m = $('#msg'), n = $('#name').value.trim(), em = $('#email').value.trim(), note = $('#note').value.trim(),
+        piece = $('#qPiece').value, size = $('#size').value.trim(), qty = parseInt($('#qty').value, 10) || 1;
+    if (!n || !validEmail(em)) { m.textContent = 'Please enter your name and a valid email address.'; return; }
+    if (note.length < 5) { m.textContent = 'Please describe your design in the details box.'; return; }
+    var quotes = store.get('cq2_quotes', []);
+    quotes.push({ date: new Date().toISOString(), name: n, email: em, piece: piece, size: size, qty: qty, note: note });
+    store.set('cq2_quotes', quotes);
+    var body = 'Name: ' + n + '\nEmail: ' + em + '\nPiece: ' + LABEL[piece] + '\nSize(s): ' + size + '\nQuantity: ' + qty + '\n\n' + note;
+    var a = document.createElement('a');
+    a.href = 'mailto:hello@customique.com?subject=' + encodeURIComponent('Quote request from ' + n) + '&body=' + encodeURIComponent(body);
+    document.body.appendChild(a); a.click(); a.remove();
+    m.textContent = 'Thank you, ' + n + '. Your email app should open: press send, and attach any artwork files.';
+    e.target.reset(); $('#qty').value = 1;
+  });
+
+  /* ---------- init ---------- */
+  renderStudio(); renderCart();
+})();
+
+</script>
+</body>
+</html>
